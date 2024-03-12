@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAutoPoc.Api", "RentAutoPoc.Api\RentAutoPoc.Api.csproj", "{EF882EF1-9768-49F1-B8F4-AC0C73AF2885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docker-compose", "dockercontext\docker-compose.dcproj", "{24BB1CCC-A7D2-4ACE-AF14-A3A2501D9620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF882EF1-9768-49F1-B8F4-AC0C73AF2885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF882EF1-9768-49F1-B8F4-AC0C73AF2885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF882EF1-9768-49F1-B8F4-AC0C73AF2885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF882EF1-9768-49F1-B8F4-AC0C73AF2885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BB1CCC-A7D2-4ACE-AF14-A3A2501D9620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BB1CCC-A7D2-4ACE-AF14-A3A2501D9620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BB1CCC-A7D2-4ACE-AF14-A3A2501D9620}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BB1CCC-A7D2-4ACE-AF14-A3A2501D9620}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
