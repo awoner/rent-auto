@@ -50,13 +50,13 @@ namespace RentAutoPoc.Api
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseMetricServer();
+            
             if (_hostEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMetricServer();
-            
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -65,7 +65,7 @@ namespace RentAutoPoc.Api
             app.UseCors("CorsPolicy");
             app.UseResponseCompression();
             app.UseRouting();
-            app.UseHttpMetrics(options=>
+            app.UseHttpMetrics(options =>
             {
                 options.AddCustomLabel("host", context => context.Request.Host.Host);
             });

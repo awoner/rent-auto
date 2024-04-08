@@ -10,7 +10,10 @@
   <ItemGroup>
     <PackageReference Include="App.Metrics.AspNetCore.All" Version="4.4.0-preview.0.10" />
     <PackageReference Include="App.Metrics.Prometheus" Version="4.4.0-preview.0.10" />
+    <PackageReference Include="Google.Analytics.Data.V1Beta" Version="2.0.0-beta05" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.67.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
+    <PackageReference Include="NCrontab" Version="3.3.3" />
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="prometheus-net" Version="8.2.1" />
     <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
