@@ -27,7 +27,12 @@ public static class ServiceCollectionExtensions
             return new ElasticClient(settings);
         });
 
-        services.AddSingleton<IGampClient, GampClient>();
+        services.AddSingleton<IGampClient>(_ =>
+            new GampClient(
+                userId: "123",
+                clientId: "207438",
+                apiSecret: "Sm5biFbgSFuDCnpze8mVbA",
+                measurementId: "G-CE14B9L6T5"));
         services.AddSingleton<IHryvnaExchangeRateService, NbuUahExchangeRateService>();
         services.AddSingleton<NbuClient>();
 
