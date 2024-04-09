@@ -23,7 +23,7 @@ public class NbuMetricsCronJob : ICronJob
         {
             var rate = await _uahExchangeRateService.GetCurrentAsync("USD", cancellationToken);
 
-            var @event = new GampEvent
+            var @event = new GampEvent<CurrencyParams>
             {
                 Name = "currency_event",
                 Params = new CurrencyParams
@@ -40,58 +40,6 @@ public class NbuMetricsCronJob : ICronJob
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-        }
-    }
-
-    static async Task SendDataToGoogleAnalytics(RateDto rate)
-    {
-        var baseUrl = "https://www.google-analytics.com/mp/collect";
-        var payload = new
-        {
-            client_id = "207439",
-            user_id = "7777",
-            non_personalized_ads = false,
-            events = new[]
-            {
-                new
-                {
-                    name = "currency_event",
-                    currency_rate = rate.Amount,
-                    value = rate.Amount,
-                    session_id = 1709293625,
-                    debug_mode = 1,
-                    engagement_time_msec = 100,
-                    @params = new
-                    {
-                        currency_rate = rate.Amount,
-                        value = rate.Amount,
-                        session_id = 1709293625,
-                        debug_mode = 1,
-                        engagement_time_msec = 100,
-                    },
-                }
-            }
-        };
-
-        var jsonPayload = JsonConvert.SerializeObject(payload);
-
-        using var client = new HttpClient();
-        
-        client.BaseAddress = new Uri(baseUrl);
-        var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-        var measurementId = "G-CE14B9L6T5";
-        var apiSecret = "Sm5biFbgSFuDCnpze8mVbA";
-
-        var response = await client.PostAsync($"?measurement_id={measurementId}&api_secret={apiSecret}", content);
-
-        if (response.IsSuccessStatusCode)
-        {
-            Console.WriteLine("Data sent successfully to Google Analytics GA4.");
-        }
-        else
-        {
-            Console.WriteLine($"Failed to send data to Google Analytics GA4. Status code: {response.StatusCode}");
         }
     }
 }

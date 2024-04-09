@@ -6,7 +6,7 @@ namespace RentAutoPoc.Api.Services;
 
 public interface IGampClient
 {
-    Task<bool> SendEvents(params GampEvent[] events);
+    Task<bool> SendEvents<T>(params GampEvent<T>[] events) where T : GampEventParams;
 }
 
 public class GampClient : IGampClient
@@ -37,14 +37,14 @@ public class GampClient : IGampClient
         };
     }
 
-    public async Task<bool> SendEvents(params GampEvent[] events)
+    public async Task<bool> SendEvents<T>(params GampEvent<T>[] events) where T : GampEventParams
     {
         if (!events.Any())
         {
             throw new ArgumentException($"Argument {nameof(events)} cannot be empty.");
         }
         
-        var request = new GampRequest
+        var request = new GampRequest<T>
         {
             ClientId = _clientId,
             UserId = _userId,
@@ -57,7 +57,7 @@ public class GampClient : IGampClient
         return response.IsSuccessStatusCode;
     }
 
-    private static StringContent CreateContent(GampRequest request)
+    private static StringContent CreateContent<T>(GampRequest<T> request) where T : GampEventParams
     {
         var payload = JsonSerializer.Serialize(request, JsonSerializerOptions);
         return new StringContent(payload, Encoding.UTF8, "text/plain");

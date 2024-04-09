@@ -1,6 +1,6 @@
 namespace RentAutoPoc.Api.Services;
 
-public class GampRequest
+public class GampRequest<T> where T : GampEventParams
 {
     public string ClientId { get; set; }
 
@@ -8,13 +8,13 @@ public class GampRequest
 
     public bool NonPersonalizedAds { get; set; }
 
-    public IEnumerable<GampEvent> Events { get; set; }
+    public IEnumerable<GampEvent<T>> Events { get; set; }
 }
 
-public class GampEvent
+public class GampEvent<T> where T : GampEventParams
 {
     public string Name { get; set; }
     
-    public GampEventParams Params { get; set; }
+    public T Params { get; set; }
     
 }
