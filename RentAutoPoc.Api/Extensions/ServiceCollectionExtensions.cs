@@ -38,6 +38,8 @@ public static class ServiceCollectionExtensions
 
         services.AddCronJob<NbuMetricsCronJob>("0 * * * *");
         
+        services.AddSingleton<IImageService, LocalImageService>();
+        
         return services;
     }
     
