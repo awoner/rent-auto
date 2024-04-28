@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>e7588af1-cf1f-438a-b689-70feceb892c2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,7 @@
     <PackageReference Include="App.Metrics.Prometheus" Version="4.4.0-preview.0.10" />
     <PackageReference Include="Google.Analytics.Data.V1Beta" Version="2.0.0-beta05" />
     <PackageReference Include="Google.Apis.Auth" Version="1.67.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
     <PackageReference Include="NCrontab" Version="3.3.3" />
     <PackageReference Include="NEST" Version="7.17.5" />
@@ -25,5 +27,12 @@
       <Link>.dockerignore</Link>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources/Images/*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
 </Project>
