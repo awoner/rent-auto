@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
     <PackageReference Include="NCrontab" Version="3.3.3" />
-    <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="NEST" Version="7.15.2" />
     <PackageReference Include="prometheus-net" Version="8.2.1" />
     <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
     <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
@@ -30,6 +30,12 @@
 
   <ItemGroup>
     <Content Include="Resources/Images/*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources/Dictionaries/*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

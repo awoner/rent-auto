@@ -1,7 +1,7 @@
 ﻿FROM nginx:alpine AS builder
 
 # nginx:alpine contains NGINX_VERSION environment variable, like so:
-ENV NGINX_VERSION 1.25.4
+ENV NGINX_VERSION 1.25.5
 # Our NCHAN version
 ENV NGX_CACHE_PURGE 2.5.3
 

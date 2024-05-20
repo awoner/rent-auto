@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Elasticsearch.Net;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using MongoDB.Driver;
 using NCrontab;
 using Nest;
@@ -23,7 +24,10 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<IElasticClient>(sp =>
         {
-            var settings = new ConnectionSettings(new Uri(connectionStrings.ElasticsearchConnectionStrings.Url));
+            var settings = new ConnectionSettings(new Uri(connectionStrings.ElasticsearchConnectionStrings.Url))
+                .DisablePing()
+                .ServerCertificateValidationCallback(CertificateValidations.AllowAll)
+                .EnableApiVersioningHeader(false);
             return new ElasticClient(settings);
         });
 
@@ -36,6 +40,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IHryvnaExchangeRateService, NbuUahExchangeRateService>();
         services.AddSingleton<NbuClient>();
 
+        services.AddHostedService<ElasticSeedBackgroundService>();
         services.AddCronJob<NbuMetricsCronJob>("0 * * * *");
         
         services.AddSingleton<IImageService, LocalImageService>();
