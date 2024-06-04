@@ -7,8 +7,8 @@ namespace RentAutoPoc.Api.Controllers;
 [Route("api/v1/search")]
 public class SearchController : ControllerBase
 {
-    private const float LongWordLength = 6.0f;
-    private const float AllowedTyposCount = 2.0f;
+    private const float LongWordLength = 7.0f;
+    private const float AllowedTyposCount = 3.0f;
     
     private readonly IElasticClient _elasticClient;
 

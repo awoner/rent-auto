@@ -105,10 +105,7 @@ public class ElasticSeedBackgroundService : BackgroundService
             await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
         }
         
-        await _elasticClient.DeleteByQueryAsync<Car>(
-            s => s.Index("cars").Query(q => q.MatchAll()), stoppingToken);
-
         await _elasticClient.DeleteByQueryAsync<string>(
-            s => s.Index("eng_words").Query(q => q.MatchAll()), stoppingToken);
+            s => s.Index("vocabulary").Query(q => q.MatchAll()), stoppingToken);
     }
 }
