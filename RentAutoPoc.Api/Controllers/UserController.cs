@@ -22,6 +22,26 @@ public class UserController : ControllerBase
         return Ok(await users.ToListAsync());
     }
 
+    [HttpPut]
+    public async Task<IActionResult> Add()
+    {
+        var collection = await GetOrCreateCollection("users");
+        var user = new User
+        {
+            Name = "Name" + Guid.NewGuid(),
+            BirthYear = 1999,
+        };
+
+        var existed = collection.FindAsync(u => u.Name == user.Name && u.BirthYear == user.BirthYear);
+        if (existed is not null)
+        {
+            return NoContent();
+        }
+        
+        await collection.InsertOneAsync(user, new InsertOneOptions(), CancellationToken.None);
+        return NoContent();
+    }
+
     private async Task<IMongoCollection<User>> GetOrCreateCollection(string name)
     {
         var collectionExists = _mongo.ListCollectionNames().ToList().Contains(name);
@@ -31,20 +51,5 @@ public class UserController : ControllerBase
         }
         
         return _mongo.GetCollection<User>(name);
-    }
-
-    [HttpPut]
-    public async Task<IActionResult> Add()
-    {
-        
-        var collection = await GetOrCreateCollection("users");
-        var car = new User
-        {
-            Name = "Name" + Guid.NewGuid(),
-            BirthYear = 1999,
-        };
-        
-        await collection.InsertOneAsync(car, new InsertOneOptions(), CancellationToken.None);
-        return NoContent();
     }
 }
