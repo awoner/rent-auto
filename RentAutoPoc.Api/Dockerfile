@@ -18,4 +18,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=publish /app/publish/Resources/Images /app/Resources/Images
+COPY --from=publish /app/publish/Resources/Dictionaries /app/Resources/Dictionaries
 ENTRYPOINT ["dotnet", "RentAutoPoc.Api.dll"]

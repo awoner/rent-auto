@@ -1,0 +1,4 @@
+http://localhost:9005/api/v1/users PUT
+http://localhost:9005/api/v1/users
+http://localhost:9005/api/v1/cars
+http://localhost:9005/api/v1/images/image.jpg

@@ -7,6 +7,8 @@ namespace RentAutoPoc.Api.Controllers;
 [Route("api/v1/cars")]
 public class CarController : ControllerBase
 {
+    private static readonly Random Random = new Random();
+    
     private readonly IElasticClient _elasticClient;
 
     public CarController(IElasticClient elasticClient)
@@ -32,7 +34,7 @@ public class CarController : ControllerBase
         {
             Id = Guid.NewGuid(),
             Model = "Model" + Guid.NewGuid(),
-            CreatedDateTime = DateTimeOffset.Now.ToUnixTimeSeconds()
+            ModelYear = Random.Next(1950, 2024)
         };
         
         await _elasticClient.IndexAsync(car, i => i

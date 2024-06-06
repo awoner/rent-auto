@@ -6,5 +6,5 @@ public class Car
     
     public string Model { get; set; }
     
-    public long CreatedDateTime { get; set; }
+    public int ModelYear { get; set; }
 }
